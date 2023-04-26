@@ -97,8 +97,6 @@ MyCircularQueue* obj;
 {
     if(obj->count == 0) return false;
 
-    int front = obj->front;
-
     obj->queue[obj->front] = -1;
 
     ++(obj->front);
@@ -135,7 +133,7 @@ MyCircularQueue* obj;
 {
     if(myCircularQueueIsEmpty(obj)) return -1;
     int rear = obj->rear;
-    return obj->queue[(rear - 1 < 0) ? (obj->length - 1) : rear];
+    return obj->queue[(rear - 1 < 0) ? (obj->length - 1) : rear - 1];
 }
 
 void myCircularQueueFree(obj)
@@ -252,11 +250,38 @@ void testMyCircularQueueRear()
     printf("testMyCircularQueueRear: PASS\n");
 }
 
+void testCase9()
+{
+    MyCircularQueue* obj = myCircularQueueCreate(3);
+    printf("%d\n", myCircularQueueEnQueue(obj, 1));
+    printf("%d\n", myCircularQueueEnQueue(obj, 2));
+    printf("%d\n", myCircularQueueEnQueue(obj, 3));
+    printf("%d\n", myCircularQueueEnQueue(obj, 4));
+    printf("obj->count: %d\n", obj->count);
+    printf("front: %d\n", myCircularQueueFront(obj));
+    printf("rear: %d\n", myCircularQueueRear(obj));
+    printf("dequeue: %d\n", myCircularQueueDeQueue(obj));
+    printf("obj->front: %d\n", myCircularQueueFront(obj));
+    printf("obj->rear: %d\n", myCircularQueueRear(obj));
+    printf("obj->rear direct: %d\n", obj->rear);
+    printf("obj->count: %d\n", obj->count);
+    printf("%d\n", myCircularQueueEnQueue(obj, 4));
+    printf("obj->front: %d\n", myCircularQueueFront(obj));
+    printf("obj->count: %d\n", obj->count);
+    printf("obj->rear: %d\n", myCircularQueueRear(obj));
+    printf("obj->rear direct: %d\n", obj->rear);
+    printf("%d\n", myCircularQueueRear(obj));
+
+}
+
 int main()
 {
     testMyCircularQueueEnQueue();
     testMyCircularQueueDeQueue();
     testMyCircularQueueFront();
     testMyCircularQueueRear();
+
+    printf("testCase9\n");
+    testCase9();
     return 0;
 }
