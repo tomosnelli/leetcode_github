@@ -33,9 +33,14 @@ Constraints:
 
 */
 
-int singleNumber(int* nums, int numsSize){
+#include <stdio.h>
+
+int singleNumber(nums, numsSize)
+int* nums;
+int numsSize;
+{
     int single = 0;
-    for(int i = 0; i < numSize; ++i){
+    for(int i = 0; i < numsSize; ++i){
         single ^= nums[i];
     }
 
@@ -43,7 +48,7 @@ int singleNumber(int* nums, int numsSize){
 }
 
 int main(){
-    int array = [1, 2, 2, 3, 3];
+    int array[] = {1, 2, 2, 3, 3};
     int single = singleNumber(array, 5);
     printf("%d\n", single);
     return 0;
