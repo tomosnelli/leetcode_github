@@ -20,6 +20,7 @@ int climbStairs(int n)
 }
 */
 
+/* my slow solution
 int climbStairs(int n)
 {
 
@@ -37,8 +38,9 @@ int climbStairs(int n)
     }
     return array[n];
 }
+*/
 
-int optimal(int n){
+int climbStairs(int n){
     int n1 = 1, n2 = 2;
 
     if(n==1) return n1;
