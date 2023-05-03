@@ -67,7 +67,8 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2)
 }
 */
 
-void printList(struct ListNode* head) {
+void printList(struct ListNode* head)
+{
     while (head != NULL) {
         printf("%d -> ", head->val);
         head = head->next;
