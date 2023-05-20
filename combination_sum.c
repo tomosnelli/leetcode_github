@@ -4,16 +4,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #define MAX_RESULT 150
 #define MAX_COMBO 30
 
 /* wrapper function for memory reallocation */
-void add_to_array(int* temp, int* temp_size, int *occupied_count, int value)
+void add_to_array(int** temp, int* temp_size, int *occupied_count, int value)
 {
     if(*temp_size == *occupied_count){
         *temp_size += 5;
-        *temp = realloc(*temp, (temp_size)*sizeof(int));
+        *temp = realloc(*temp, (*temp_size)*sizeof(int));
         if(*temp == NULL){
             printf("Error: Memory Reallocation Failed at line 15");
             exit(1);
@@ -22,7 +23,7 @@ void add_to_array(int* temp, int* temp_size, int *occupied_count, int value)
 
     // a = [1, 2, 3, NULL, NULL]
     // oc = 3
-    temp[*occupied_count] = value;
+    (*temp)[*occupied_count] = value;
     ++(*occupied_count);
 }
 
@@ -36,30 +37,32 @@ void helper(
     int* combination_size,
     int* occupied_count,
     int current_running_sum,
-    int target
+    int target,
+    int start
 )
 {
-    if(current_running_sum == target){
-        // add to the result array
-        result[*returnSize] = (int*) malloc(occupied_count * sizeof(int));
-        memcpy(result[*retunSize], combination, (occupied_count*sizeof(int)));
-        ++(*returnSize);
+    if(current_running_sum > target){
+        return;
     }
 
-    // need to think about this
-    if(current_running_sum > target){
-
+    if(current_running_sum == target){
+        // add to the result array
+        result[*returnSize] = (int*) malloc(*occupied_count * sizeof(int));
+        memcpy(result[*returnSize], combination, (*occupied_count * sizeof(int)));
+        (*returnColumnSizes)[*returnSize] = *occupied_count;
+        ++(*returnSize);
     }
 
     // still can add stuff
     if(current_running_sum < target){
-        for(int i = 0; i < candidatesSize; ++i){
-            add_to_array(combination, combination_size, occupied_count, candidates[i]);
+        for(int i = start; i < candidatesSize; ++i){
+            add_to_array(&combination, combination_size, occupied_count, candidates[i]);
             helper(
-                result, retunSize, candidates, candidatesSize,
+                result, returnSize, candidates, candidatesSize, returnColumnSizes,
                 combination, combination_size, occupied_count,
-                current_running_sum+candidates[i], target
+                current_running_sum+candidates[i], target, i
             );
+            --(*occupied_count); // backtrack
             /*
                 if we exit from helper() it means that there was
                 a valid/non-valid combination, either way it will
@@ -141,7 +144,7 @@ void helper(
                 target = 5
                 exit function, go up stack
 
-
+                I think this run thru covers the basic logic
                 
             */
         }
@@ -156,12 +159,19 @@ int** combinationSum(
     int** returnColumnSizes
 )
 {
-    int* combination_size = MAX_COMBO;
+    int combination_size = MAX_COMBO;
     int occupied_count = 0;
-    int* combination = (int*) malloc(MAX_COMBO * size)
+    int* combination = (int*) malloc(MAX_COMBO * sizeof(int));
+
+    *returnSize = 0;
     int** result = (int**) malloc(MAX_RESULT * sizeof(int*));
+    *returnColumnSizes = (int*) malloc(MAX_RESULT * sizeof(int));
 
+    helper(result, returnSize, candidates, candidatesSize, returnColumnSizes, combination, &combination_size, &occupied_count, 0, target, 0);
 
+    free(combination);
+
+    return result;
 }
 
 void test_case1() {
