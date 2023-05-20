@@ -38,10 +38,6 @@ void helper(
     int start
 )
 {
-    if(current_running_sum > target){
-        return;
-    }
-
     if(current_running_sum == target){
         result[*returnSize] = (int*) malloc(*occupied_count * sizeof(int));
         memcpy(result[*returnSize], combination, (*occupied_count * sizeof(int)));
