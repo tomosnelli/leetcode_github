@@ -9,7 +9,7 @@
 #define MAX_COMBO 30
 
 /* wrapper function for memory reallocation */
-void add_to_array(int** temp, int* temp_size, int *occupied_count)
+void add_to_array(int* temp, int* temp_size, int *occupied_count, int value)
 {
     if(*temp_size == *occupied_count){
         *temp_size += 5;
@@ -19,9 +19,14 @@ void add_to_array(int** temp, int* temp_size, int *occupied_count)
             exit(1);
         }
     }
+
+    // a = [1, 2, 3, NULL, NULL]
+    // oc = 3
+    temp[*occupied_count] = value;
+    ++(*occupied_count);
 }
 
-int** helper(
+void helper(
     int** result,
     int* returnSize,
     int* candidates,
@@ -48,7 +53,98 @@ int** helper(
 
     // still can add stuff
     if(current_running_sum < target){
-        
+        for(int i = 0; i < candidatesSize; ++i){
+            add_to_array(combination, combination_size, occupied_count, candidates[i]);
+            helper(
+                result, retunSize, candidates, candidatesSize,
+                combination, combination_size, occupied_count,
+                current_running_sum+candidates[i], target
+            );
+            /*
+                if we exit from helper() it means that there was
+                a valid/non-valid combination, either way it will
+                be handled correctly thus we need to do some backtracking here
+            */
+            /*
+                [2, 3, 6, 7] target = 5
+
+                helper will exit at this point
+                combination = [2, 2, 2]
+                current_running_sum = 6
+                target = 5
+
+                go back up the stack
+                combination = [2, 2]
+                current_running_sum = 4
+                target = 5
+                i = 0
+
+                i will be incremented
+                i = 1
+
+                new call to stack
+                combination will have new element
+                combination = [2, 2, 3]
+                current_running_sum = 7
+                target = 5
+                exit function, go up stack
+
+                combination = [2, 2]
+                current_running_sum = 4
+                target = 5
+
+                i will be incremented
+                i = 2
+
+                new call on stack
+                combination = [2, 2, 6]
+                sum = 10
+                target =5
+                exit function, go up stack
+
+                combination = [2, 2]
+                sum = 4
+                target =5
+
+                i will be incremented
+                i= 3
+
+                new call on stack
+                combination = [2, 2, 7]
+                sum = 11
+                target = 5
+
+                exit out of function, go up stack
+
+                for loop ends
+
+                combination = [2, 2]
+                
+                i will be incremented
+                i = 1
+
+                new call on stack
+                combination = [2, 3]
+                sum = 5
+                target = 5
+
+                add array to result
+                exit function, go up stack
+
+                i will be incremented
+                i = 2
+
+                new call on stack
+
+                combination = [2, 6]
+                sum = 8
+                target = 5
+                exit function, go up stack
+
+
+                
+            */
+        }
     }
 }
 
