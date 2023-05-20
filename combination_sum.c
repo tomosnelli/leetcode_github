@@ -20,8 +20,7 @@ void add_to_array(int** temp, int* temp_size, int *occupied_count, int value)
         }
     }
 
-    (*temp)[*occupied_count] = value;
-    ++(*occupied_count);
+    (*temp)[(*occupied_count)++] = value;
 }
 
 void helper(
@@ -41,8 +40,7 @@ void helper(
     if(current_running_sum == target){
         result[*returnSize] = (int*) malloc(*occupied_count * sizeof(int));
         memcpy(result[*returnSize], combination, (*occupied_count * sizeof(int)));
-        (*returnColumnSizes)[*returnSize] = *occupied_count;
-        ++(*returnSize);
+        (*returnColumnSizes)[(*returnSize)++] = *occupied_count;
     }
 
     if(current_running_sum < target){
