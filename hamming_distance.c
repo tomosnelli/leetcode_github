@@ -7,7 +7,7 @@ int hammingDistance(int x, int y)
 {
     int n = x ^ y;
     int sum = 0;
-    while(xored){
+    while(n){
         if(n&0b1){
             ++sum;
         }
