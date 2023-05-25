@@ -20,6 +20,8 @@ bool containsDuplicate(int* nums, int numsSize){
 }
 */
 
+// uthash solution
+// time improves but space complexity goes bad
 typedef struct
 {
     int val;
