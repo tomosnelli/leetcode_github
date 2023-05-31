@@ -98,7 +98,7 @@ void test_case3() {
 // Test Case 4
 void test_case4() {
     char str[] = "racecar";
-    int expected_output = 11;
+    int expected_output = 10;
     int output = countSubstrings(str);
 
     printf("Input: %s\n", str);
