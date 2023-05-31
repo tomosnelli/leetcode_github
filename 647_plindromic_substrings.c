@@ -6,6 +6,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+/*
+// my slow solution
 bool isPalindrome(int start, int end, char* s)
 {
     while(start < end){
@@ -32,6 +34,32 @@ int countSubstrings(char* s)
     }
 
     return count;
+}
+*/
+
+// fast solution
+void checkPalindromic(char* s, int len, int left, int right, int* ansCnt){
+    if(left == right) {
+        (*ansCnt)++;
+        left--;
+        right++;
+    }
+    while(left >= 0 && right < len){
+        if(s[left] != s[right])
+            break;
+        (*ansCnt)++;
+        left--;
+        right++;
+    }
+}
+
+int countSubstrings(char * s){
+    int len = strlen(s), ansCnt = 0;
+    for(int i = 0; i < len; i++){
+        checkPalindromic(s, len, i, i, &ansCnt);
+        checkPalindromic(s, len, i, i+1, &ansCnt);
+    }
+    return ansCnt;
 }
 
 // Test Case 1
