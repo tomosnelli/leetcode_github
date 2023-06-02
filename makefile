@@ -10,6 +10,7 @@ default: all
 # The target to compile and execute the binary executable
 run: all
 	./solutions/$(FILENAME)
+	rm -f ./solutions/$(FILENAME)	
 
 # The target to compile the source code
 all:
