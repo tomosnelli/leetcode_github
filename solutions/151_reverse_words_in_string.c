@@ -1,46 +1,47 @@
 /*
     151. Reverse Words in a String
 */
-#include <stdio.h>
-#include <string.h>
+#include "../utils/common.h"
 
-#define SPACE ' '
 #define END '\0'
 
-int getWordLength(char *s){
-    int length = 0;
-    while(*s != SPACE && *s != END){
-        ++length;
-        ++s;
-    }
-    return length;
-}
-
-void reverseOneWord(char *s, int size){
-    int i;
-    int j;
-    for(i = 0, j = size - 1; i < j; ++i, --j){
-        int temp = s[i];
-        s[i] = s[j];
-        s[j] = temp;
-    }
-}
-
 char* reverseWords(char* s){
-    char* ptr = s;
-    while(*s != END){
-        int size = getWordLength(s);
-        reverseOneWord(s, size);
-        for(int i = 0; i < size; ++i){
-            ++s;
-        }
-        ++s;
+
+    int length = strlen(s);
+
+    char* copy = malloc((length + 1) * sizeof(char));
+    strcpy(copy, s);
+
+    char* token = strtok(copy, " ");
+    char* words[length];
+    int word_count = 0;
+
+    while(token != NULL){
+        words[word_count++] = token;
+        token = strtok(NULL, " ");
     }
-    return ptr;
+
+    char* reversed = malloc((length + 1) * sizeof(char));
+    reversed[0] = END;
+
+    for(int i = word_count - 1; i >= 0; --i){
+        strcat(reversed, words[i]);
+        if(i > 0){
+            strcat(reversed, " ");
+        }
+    }
+
+    free(copy);
+
+    return reversed;
 }
+
 
 int main(){
     char s[] = "Let's take Leetcode contest";
+    // size = 27
+    // length of last word is 7
+    // starting point should be 21
     char * reversed = reverseWords(s);
     printf("%s\n", reversed);
     return 0;
