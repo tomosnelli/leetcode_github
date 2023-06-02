@@ -7,7 +7,6 @@
 struct ListNode {
     int val;
     struct ListNode *next;
-    struct ListNode *random;
 };
 
 struct ListNode* create_node(int val)
@@ -36,7 +35,7 @@ void insert_node(struct ListNode** head, int val)
     }
 }
 
-struct Node* copyRandomList(struct Node* head) {
+struct ListNode* copyRandomList(struct ListNode* head) {
     if(!head) return NULL;
 
     struct ListNode* node = create_node(head->data);
