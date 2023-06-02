@@ -1,7 +1,7 @@
 /*
     125. Valid Palindrome
 */
-#include "utils/common.h"
+#include "../utils/common.h"
 
 bool isAlphanumeric(char* s)
 {
