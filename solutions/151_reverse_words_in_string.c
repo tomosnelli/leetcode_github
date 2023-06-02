@@ -5,6 +5,8 @@
 
 #define END '\0'
 
+/*
+// slow
 char* reverseWords(char* s){
 
     int length = strlen(s);
@@ -34,6 +36,63 @@ char* reverseWords(char* s){
     free(copy);
 
     return reversed;
+}
+*/
+
+char* reverseWords(char* s) {
+    int length = strlen(s);
+
+    // Trim leading spaces
+    int i = 0;
+    while (i < length && s[i] == ' ') {
+        i++;
+    }
+
+    // Remove extra spaces between words
+    int j = 0;
+    int k = 0;
+    char prev = ' ';
+    while (i < length) {
+        if (!(s[i] == ' ' && prev == ' ')) {
+            s[j++] = s[i];
+        }
+        prev = s[i];
+        i++;
+    }
+
+    // Trim trailing spaces
+    while (j > 0 && s[j - 1] == ' ') {
+        j--;
+    }
+
+    // Null-terminate the string
+    s[j] = '\0';
+    length = j;
+
+    // Reverse the entire string
+    for (i = 0; i < length / 2; i++) {
+        char temp = s[i];
+        s[i] = s[length - i - 1];
+        s[length - i - 1] = temp;
+    }
+
+    // Reverse individual words
+    i = 0;
+    while (i < length) {
+        int wordStart = i;
+        int wordLength = 0;
+        while (i + wordLength < length && s[i + wordLength] != ' ') {
+            wordLength++;
+        }
+        for (k = 0; k < wordLength / 2; k++) {
+            char temp = s[wordStart + k];
+            s[wordStart + k] = s[i + wordLength - k - 1];
+            s[i + wordLength - k - 1] = temp;
+        }
+        i = i + wordLength + 1;
+    }
+
+    return s;
 }
 
 
