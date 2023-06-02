@@ -21,3 +21,10 @@ int main()
 {
     return 0;
 }
+
+#include "uthash.h"
+typedef struct
+{
+    int val;
+    UT_hash_handle hh;
+} HashTable;
