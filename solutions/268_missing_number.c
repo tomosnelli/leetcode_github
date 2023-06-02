@@ -1,3 +1,6 @@
+/*
+    268. Missing Number
+*/
 #include <stdio.h>
 
 int sum_of_sequence(int n)
