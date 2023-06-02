@@ -18,6 +18,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
             if(nums[i] + nums[j] == target){
                 return_array[0] = i;
                 return_array[1] = j;
+                break;
             }
         }
     }
