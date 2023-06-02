@@ -1,3 +1,6 @@
+/*
+    100. Same Tree
+*/
 #include <stdio.h>
 #include <bool.h>
 
