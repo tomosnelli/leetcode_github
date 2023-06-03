@@ -42,6 +42,12 @@ typedef struct
 
 /* qsort function */
 /*
+***********************************************
+    This function needs to be present in the
+    code section that will be submitted.
+    Thus it doesn't make sense to keep it here
+***********************************************
+/*
 int compare_int(const void* a, const void* b);
 */
 
