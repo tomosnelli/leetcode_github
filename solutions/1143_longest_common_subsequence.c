@@ -35,61 +35,20 @@ int longestCommonSubsequence(char* text1, char* text2)
     return result;
 }
 
-void test_case1()
+void runTest(char* text1, char* text2, int expected)
 {
-    char *text1 = "abcde";
-    char *text2 = "ace";
-    int expected = 3;
     int result = longestCommonSubsequence(text1, text2);
     assert(result == expected);
-}
-
-void test_case2()
-{
-    char *text1 = "abc";
-    char *text2 = "def";
-    int expected = 0;
-    int result = longestCommonSubsequence(text1, text2);
-    assert(result == expected);
-}
-
-void test_case3()
-{
-    char *text1 = "a";
-    char *text2 = "a";
-    int expected = 1;
-    int result = longestCommonSubsequence(text1, text2);
-    assert(result == expected);
-}
-
-/* passes leetcode test but this test fails */
-/*
-void test_case4()
-{
-    char *text1 = "abcdefghijklmnopqrstuvwxyz";
-    char *text2 = "bdfhjlnprtvxz";
-    int expected = 12;
-    int result = longestCommonSubsequence(text1, text2);
-    assert(result == expected);
-}
-*/
-
-void test_case5()
-{
-    char *text1 = "hello";
-    char *text2 = "world";
-    int expected = 2;
-    int result = longestCommonSubsequence(text1, text2);
-    assert(result == expected);
+    printf("Test case passed: %s, %s => Expected: %d, Result: %d\n", text1, text2, expected, result);
 }
 
 int main()
 {
-    test_case1();   
-    test_case2();
-    test_case3();
-    //test_case4();
-    test_case5();
+    runTest("abcde", "ace", 3);
+    runTest("abc", "def", 0);
+    runTest("a", "a", 1);
+    runTest("abcdefghijklmnopqrstuvwxyz", "bdfhjlnprtvxz", 13);
+    runTest("hello", "world", 1);
     printf("Passed All Test Cases\n");
     return 0;
 }
