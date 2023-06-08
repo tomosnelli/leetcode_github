@@ -1,0 +1,8 @@
+can you write <number> test cases for <leetcode question> in C? Format should be:
+
+void test_case1()
+{
+
+}
+
+and each function should be called in main()
