@@ -35,7 +35,6 @@ int lengthOfLastWord(char* s){
         s = moveToWord(s);
         int temp = countWord(s);
         count = temp > 0 ? temp : count;
-        // tomo homo
         s += temp;
     }
 
