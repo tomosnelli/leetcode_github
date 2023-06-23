@@ -7,6 +7,7 @@
 #define SPACE ' '
 #define END '\0'
 
+/* SLOW
 char* moveToWord(char* s){
     while(*s == SPACE && *s != END){
         ++s;
@@ -39,4 +40,22 @@ int lengthOfLastWord(char* s){
     }
 
     return count;
+}
+*/
+
+int lengthOfLastWord(char* s){
+    int count = 0, output;
+
+    while(*s != END){
+        if(*s != SPACE){
+            ++count;
+            output = count;
+        } else {
+            count = 0;
+        }
+
+        ++s;
+    }
+
+    return output;
 }
