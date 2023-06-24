@@ -66,7 +66,7 @@ A structure is a user-defined data type that can contain multiple variables of d
 <h2>30. String arrays</h2>
 <pre>
 char* string = "Hello World";
-char string2[] = "Hello World";
+char string2[] = "Hello World"; 
 
 string[0] = 'a';
 string2[1] = 'a';
@@ -74,3 +74,4 @@ string2[1] = 'a';
 printf("sizeof string: %d\n", sizeof(string));
 printf("sizeof string2: %d\n", sizeof(string2));
 </pre>
+<p>string is a "string literal" and the string value is stored in read-only memory. Whereas string1 is initialized as "char string[]" and it holds a copy of the string literal.</p>
