@@ -48,14 +48,17 @@
 <p>Dynamic memory allocation in C allows programs to allocate and deallocate memory during runtime. It involves using functions like "malloc", "calloc", and "realloc" to allocate memory on the heap and "free" to deallocate it.</p>
 <h2>24. What is the purpose of the "enum" keyword in C?</h2>
 <p>The "enum" keyword in C is used to define an enumerated data type. It allows you to create a set of named constants, also known as enumerators, which can be used to represent a set of related values.</p>
-<h2>25. Explain the concept of recursion in C.</h2>
-<p>Recursion is a technique where a function calls itself. It allows solving complex problems by breaking them into simpler subproblems. Recursion requires a base case to stop the recursive calls.</p>
-<h2>26. What is the purpose of the "break" statement in C?</h2>
+<h2>25. What is the purpose of the "break" statement in C?</h2>
 <p>The "break" statement in C is used to exit from a loop or switch statement. It allows you to terminate the current iteration or switch case and continue executing the code after the loop or switch block.</p>
-<h2>27. How do you find the largest and smallest elements in an array in C?</h2>
+<h2>26. How do you find the largest and smallest elements in an array in C?</h2>
 <p>To find the largest and smallest elements in an array in C, you can iterate through the array and compare each element with the current largest and smallest values. Update the largest and smallest values accordingly.</p>
-<h2>28. Explain the concept of function pointers in C.</h2>
+<h2>27. Explain the concept of function pointers in C.</h2>
 <p>Function pointers in C are variables that store the address of functions. They allow passing functions as arguments to other functions, storing them in data structures, and invoking them dynamically at runtime.</p>
 
-<h2>29. Explain the concept of recursion in C.</h2>
+<h2>28. Explain the concept of recursion in C.</h2>
 <p>Recursion is a technique where a function calls itself. It allows solving complex problems by breaking them into simpler subproblems. Recursion requires a base case to stop the recursive calls.</p>
+
+<h2>29. What is the difference between a structure and union in C?</h2>
+<p>
+A structure is a user-defined data type that can contain multiple variables of different types. A union, on the other hand, can hold variables of different types but shares the same memory space, allowing only one member to be active at a time.
+</p>
