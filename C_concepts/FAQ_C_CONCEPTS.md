@@ -64,7 +64,6 @@ A structure is a user-defined data type that can contain multiple variables of d
 </p>
 
 <h2>30. String arrays</h2>
-<pre>
 <code>
 char* string = "Hello World";
 char string2[] = "Hello World";
@@ -75,4 +74,3 @@ string2[1] = 'a';
 printf("sizeof string: %d\n", sizeof(string));
 printf("sizeof string2: %d\n", sizeof(string2));
 </code>
-</pre>
