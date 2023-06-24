@@ -62,3 +62,15 @@
 <p>
 A structure is a user-defined data type that can contain multiple variables of different types. A union, on the other hand, can hold variables of different types but shares the same memory space, allowing only one member to be active at a time.
 </p>
+
+<h2>30. String arrays</h2>
+<code>
+    char* string = "Hello World";
+    char string2[] = "Hello World";
+
+    string[0] = 'a';
+    string2[1] = 'a';
+
+    printf("sizeof string: %d\n", sizeof(string));
+    printf("sizeof string2: %d\n", sizeof(string2));
+</code>
